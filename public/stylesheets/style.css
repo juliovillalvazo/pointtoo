@@ -1,12 +1,70 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+:root {
+    --main-yellow: #ffd166;
+    --light-blue: #118ab2;
+    --dark-blue: #073b4c;
+    --main-green: #06d6a0;
+    --main-red: #ef476f;
+    --white: #ffffff;
 }
 
-a {
-  color: #00b7ff;
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Rubik', 'sans-serif';
 }
 
-h1 {
-  color: 15px;
+html {
+    font-size: 62.5%;
+}
+
+/* 1rem = 10px when font size is 62.5% */
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2%;
+    background-color: var(--main-yellow);
+}
+
+.navbar-left__title {
+    color: var(--dark-blue);
+    font-size: 2.5rem;
+}
+
+.navbar-left__title:hover {
+    color: var(--main-red);
+}
+
+.navbar-right {
+    display: flex;
+    margin-right: 2rem;
+}
+
+.navbar-btn,
+.navbar-btn:visited {
+    display: inline-block;
+    background-color: var(--dark-blue);
+    border-radius: 2rem;
+    color: var(--white);
+    padding: 1.8%;
+    font-size: 1.6rem;
+    height: 3rem;
+    width: 10rem;
+    text-align: center;
+    text-decoration: none;
+}
+
+.navbar-btn:active {
+    background-color: var(--main-green);
+}
+
+.navbar-btn:not(:last-child) {
+    margin-right: 1.6rem;
+}
+
+.active,
+.active:visited {
+    background-color: var(--main-green);
 }
