@@ -1,0 +1,51 @@
+.homepage {
+    background-image: url('/images/world.gif');
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.rand-country-btn a,
+.rand-country-btn a:visited {
+    height: 6.2rem;
+    width: 24rem;
+    padding: 1.2%;
+    text-align: center;
+    background-color: #ffd166ee;
+    border-radius: 2rem;
+    position: absolute;
+    bottom: 22rem;
+    right: calc(50% - 152px);
+    box-shadow: 10px 10px 10px #073b4c;
+    color: var(--dark-blue);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 800;
+    transition: all 0.2s;
+}
+
+.rand-country-btn a:hover {
+    transform: translateY(-1rem);
+    box-shadow: 20px 23px 10px #073b4c;
+}
+
+.rand-country-btn a:active {
+    transform: translateY(0);
+    background-color: var(--main-green);
+    box-shadow: 10px 10px 10px #073b4c;
+}
+
+.icon {
+    font-size: 6.4rem;
+    color: var(--main-yellow);
+    position: absolute;
+    top: 20rem;
+    left: 40%;
+}
+
+.icon:hover {
+    color: var(--main-red);
+}
