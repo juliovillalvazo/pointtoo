@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Rubik', 'sans-serif';
+}
+
+
+.direction-middle {
+    background-color: var( --main-yellow);
+    display: flex;
+    justify-content: center;
+    padding: 20rem;
+    font-size: 5rem;
+}
+
+.alotro{
+    background-color: var(--main-red);
+    border-radius: 2rem;
+    width: 53rem;
+    height: 37rem;
+    display: grid;
+    color: black;
+}
+
+.texo-centrado {
+    display: grid;
+    justify-content: center;
+    font-size: 5rem;
+}
+.grid {
+    display: grid;
+    justify-content: center;
+    font-size: 2.5rem; 
+}
+.alinia1 {
+    display: grid;
+    height: 75px;
+}
+.alinia2 {
+    display: grid;
+    height: 75px;
+}
+.enmedio {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    color: #fff;
+    background-color: black;
+    border-radius: 4rem;
+}
+

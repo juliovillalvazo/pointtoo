@@ -1,24 +1,40 @@
-<div id="form">
-  <h2>Sign Up</h2>
-  <form action="/auth/signup" method="POST">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/signup.css">
+  <title></title>
+</head>
+<body>
+  <div class="mover">
+      <div id="form" class="move-middle">
+          <h2 class="centrado">Sign Up</h2>
+          <form action="/auth/signup" method="POST" class="grid">
 
-    <label> Username
-      <input type="text" name="username" placeholder="Your username" />
-    </label>
+              <label class="align1"> Username
+                  <input type="text" name="username" placeholder="Your username" />
+                </label>
 
-    <label> Email
-      <input type="email" name="email" placeholder="Your email" />
-    </label>
+                <label class="align2"> Email
+                  <input type="email" name="email" placeholder="Your email" />
+                </label>
 
-    <label> Password
-      <input type="password" name="password" placeholder="Your password" />
-    </label>
+                <label class="align3"> Password
+                  <input type="password" name="password" placeholder="Your password" />
+                </label>
+                 <div class="adjust">
+                 <a src="./login.hbs" placeholder="Create account" class="almedio">Create account</a>
+                 </div>
+                <!--<button type="submit">Create Account</button> -->
 
-    <button type="submit">Sign Up</button>
 
-
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-    {{/if}}
-  </form>
-</div>
+              {{#if errorMessage}}
+                <p class="error">{{errorMessage}}</p>
+              {{/if}}
+          </form>
+    </div>
+  </div>
+</body>
+</html>
