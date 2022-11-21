@@ -26,6 +26,7 @@ html {
     justify-content: space-between;
     padding: 1.2%;
     background-color: var(--main-yellow);
+    border-bottom: 1px solid grey;
 }
 
 .navbar-left__title {
