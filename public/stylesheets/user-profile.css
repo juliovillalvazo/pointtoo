@@ -17,7 +17,7 @@
     margin-bottom: 4rem;
 }
 
-.left-side {
+.user-profile-left-side {
     display: flex;
     flex-direction: column;
     background-color: var(--light-blue);
@@ -48,7 +48,7 @@
     word-break: break-all;
 }
 
-.right-side {
+.user-profile-right-side {
     padding: 3%;
     background-color: var(--light-blue);
     border-radius: 18px;

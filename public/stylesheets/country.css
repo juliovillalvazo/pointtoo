@@ -1,0 +1,140 @@
+.country {
+    background-color: var(--main-yellow);
+    padding: 5%;
+    color: var(--light-blue);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
+    height: fit-content;
+
+    font-size: 2rem;
+}
+
+.country-img {
+    display: block;
+    width: 40rem;
+    height: 30rem;
+    object-fit: cover;
+    border-radius: 18px;
+    margin-bottom: 2.6rem;
+}
+
+.country-right-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.country-left-side .top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7rem;
+}
+
+.country-info h2 {
+    font-size: 3rem;
+}
+
+.country-title {
+    font-size: 2.6rem;
+    font-weight: 600;
+}
+
+.country-rating {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.famous-dish {
+    margin-bottom: 5rem;
+}
+
+.country-actions {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.country-btn,
+.country-btn:visited {
+    text-decoration: none;
+    border: none;
+    color: white;
+    padding: 2%;
+    background-color: var(--light-blue);
+    min-width: 15rem;
+    max-width: 30rem;
+    height: 5rem;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.2s;
+    align-self: flex-end;
+}
+
+.country-btn:hover {
+    background-color: var(--main-red);
+    transform: translateY(-0.4rem);
+    box-shadow: 15px 11px 16px #073b4c;
+    cursor: pointer;
+}
+
+.country-btn:active {
+    transform: translateY(0);
+    background-color: var(--main-green);
+    box-shadow: 10px 10px 10px #073b4c;
+}
+
+.country-btn:not(:last-child) {
+    margin-right: 4rem;
+}
+
+.country-btn i {
+    margin-right: 1rem;
+}
+
+.fun-facts {
+    margin-bottom: 12rem;
+}
+
+.comment-title {
+    margin-bottom: 4rem;
+}
+
+.comments-list {
+    list-style: none;
+}
+
+.single-comment:not(:last-child) {
+    margin-bottom: 4rem;
+}
+
+.comment-username {
+    font-size: 2.4rem;
+    font-weight: 600;
+}
+
+.country-comments {
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    gap: 4rem;
+    width: 100%;
+}
+
+.comment-input {
+    margin-bottom: 3rem;
+    padding: 2%;
+}
+
+.comments-form {
+    align-self: flex-end;
+    background-color: var(--white);
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 18px;
+    min-width: 50rem;
+}

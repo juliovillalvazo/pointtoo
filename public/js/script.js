@@ -17,8 +17,12 @@ if (currentURL.includes('login')) {
     homebtn.classList.remove('active');
     signupbtn.classList.add('active');
     loginbtn.classList.remove('active');
-} else {
+} else if (currentURL === 'http://localhost:3000/') {
     homebtn.classList.add('active');
+    signupbtn.classList.remove('active');
+    loginbtn.classList.remove('active');
+} else {
+    homebtn.classList.remove('active');
     signupbtn.classList.remove('active');
     loginbtn.classList.remove('active');
 }
