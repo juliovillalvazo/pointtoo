@@ -57,9 +57,13 @@ html {
     text-decoration: none;
 }
 
-.navbar-btn:active {
+.navbar-btn:hover {
     background-color: var(--main-green);
 }
+
+/* .navbar-btn:active {
+    background-color: var(--main-green);
+} */
 
 .navbar-btn:not(:last-child) {
     margin-right: 1.6rem;
