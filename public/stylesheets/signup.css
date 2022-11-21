@@ -14,11 +14,12 @@
 }
 
 .move-middle {
-    background-color: var(--main-red);
+    background-color: #ef476f88;
     border-radius: 2rem;
     width: 53rem;
-    height: 37rem;
+    height: 40rem;
     display: grid;
+    padding: 3rem;
 }
 
 .grid {
@@ -38,6 +39,7 @@
 .align3 {
     display: grid;
     height: 77px;
+    margin-bottom: 2rem;
 }
 .almedio {
     display: flex;

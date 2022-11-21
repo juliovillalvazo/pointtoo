@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/stylesheets/signup.css">
-  <title></title>
-</head>
-<body>
+
   <div class="mover">
       <div id="form" class="move-middle">
           <h2 class="centrado">Sign Up</h2>
@@ -24,10 +15,10 @@
                 <label class="align3"> Password
                   <input type="password" name="password" placeholder="Your password" />
                 </label>
-                 <div class="adjust">
-                 <a src="./login.hbs" placeholder="Create account" class="almedio">Create account</a>
-                 </div>
-                <!--<button type="submit">Create Account</button> -->
+                 {{!-- <div class="adjust">
+                 <!--<a src="./login.hbs" placeholder="Create account" class="almedio">Create account</a> -->
+                 </div> --}}
+                <button class="almedio" type="submit">Create Account</button>
 
 
               {{#if errorMessage}}
@@ -36,5 +27,3 @@
           </form>
     </div>
   </div>
-</body>
-</html>
