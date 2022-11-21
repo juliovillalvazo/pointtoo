@@ -8,6 +8,13 @@
             <div class="country-rating">
                 <p class="country-title">rating</p>
                 <p>5/5</p>
+                <div class="stars-container">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
             </div>
         </div>
         <div class="famous-dish">
@@ -47,8 +54,21 @@
     <div class="country-right-side">
         <img class="country-img" src="/images/cool_photo.jpeg" alt="country cool picture">
         <div class="country-actions">
-            <a class="country-btn" href="#"><i class="fa-solid fa-share"></i>share</a>
-            <a class="country-btn" href="#"><i class="fa-regular fa-bookmark"></i>bookmark</a>
+
+            <button class="country-btn popup" onclick="myFunction()"><i class="fa-solid fa-share"></i>share
+                <span class="popuptext" id="myPopup">copy link: <br>
+                    http://localhost:3000/country</span>
+            </button>
+            <form>
+                <button type="submit" class="country-btn"><i class="fa-regular fa-bookmark"></i>bookmark</button>
+            </form>
+
         </div>
     </div>
+    <script>
+        function myFunction() {
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+        }
+    </script>
 </section>

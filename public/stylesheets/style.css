@@ -73,3 +73,23 @@ html {
 .active:visited {
     background-color: var(--main-green);
 }
+
+footer {
+    background-color: #ffd16688;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+footer a {
+    margin-right: 20px;
+    font-size: 2rem;
+    color: var(--dark-blue);
+}
+
+footer a:hover {
+    color: var(--main-green);
+}
