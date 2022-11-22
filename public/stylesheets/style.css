@@ -20,6 +20,10 @@ html {
 
 /* 1rem = 10px when font size is 62.5% */
 
+body {
+    height: 87vh;
+}
+
 .navbar-container {
     display: flex;
     align-items: center;
@@ -76,13 +80,16 @@ html {
 }
 
 footer {
-    background-color: #ffd16688;
+    border-top: 1px solid grey;
+    background-color: var(--main-yellow);
     width: 100%;
-    height: 10%;
+    height: 5vh;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     padding: 10px;
+    position: relative;
+    z-index: 10;
 }
 
 footer a {

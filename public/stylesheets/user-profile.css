@@ -24,7 +24,6 @@
     align-items: center;
     border-radius: 18px;
     padding: 5%;
-    max-height: 83%;
 }
 
 .user-info {
@@ -55,7 +54,6 @@
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-gap: 2rem;
-    max-height: 95%;
 }
 
 .right-side__title {
@@ -114,15 +112,15 @@
 }
 
 .user-create-link {
-   margin: 2rem; 
-   background-color: #ffd166bb;
-   font-size: 1.9rem;
-   width: 26rem;
-   display: flex;
-   justify-content: center;
-   border-radius: 1rem;
-   height: 18rem;
-   align-items: center;
+    margin-top: 2rem;
+    background-color: #ffd166bb;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.8rem;
+    height: 6rem;
+    padding: 5%;
 }
 
 .user-create-color {

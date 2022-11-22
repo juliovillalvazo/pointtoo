@@ -27,39 +27,13 @@
             <p>{{country.funFacts}}
             </p>
         </div>
-        <div class="country-comments">
-            <ul class="comments-list">
-                <p class="country-title comment-title">comments</p>
-                {{#if country.comments.length}}
-                {{#each country.comments}}
-                <li class="single-comment">
-                    <p class="comment-username">{{author.username}}</p>
-                    <p class="comment-content">{{description}}</p>
-                    <a href="/"><i class="fa-solid fa-trash"></i></a>
-                </li>
-                {{/each}}
-                {{else}}
-                <p>No comments yet, please feel free to comment</p>
-                {{/if}}
-            </ul>
-            {{#if user}}
-            <form action="/country/{{country.id}}/comment" method="post" class="comments-form">
-                <textarea class="comment-input" name="comment" rows="5" cols="33"
-                    placeholder="please insert your comment here..."></textarea>
-                <button type="submit" class="country-btn">comment</button>
-            </form>
-            {{else}}
-            <p class="loggedinerror">You need to be logged in to comment!</p>
-            {{/if}}
-        </div>
     </div>
     <div class="country-right-side">
         <img class="country-img" src="{{country.pictureUrl}}" alt="country cool picture">
         <div class="country-actions">
 
             <button class="country-btn popup" onclick="myFunction()"><i class="fa-solid fa-share"></i>share
-                <span class="popuptext" id="myPopup">copy link: <br>
-                    http://localhost:3000/country</span>
+                <span class="popuptext" id="myPopup">copied link!</span>
             </button>
             {{#if user}}
             <a href="/country/{{country.id}}/bookmark" class="country-btn"><i
@@ -73,10 +47,49 @@
         <p class="error">{{errorMessage}}</p>
         {{/if}}
     </div>
+    <div class="country-comments">
+        <ul class="comments-list">
+            <p class="country-title comment-title">comments</p>
+            {{#if country.comments.length}}
+            {{#each country.comments}}
+            <li class="single-comment">
+                <div>
+                    <p class="comment-username">{{author.username}}</p>
+                    <p class="comment-content">{{description}}</p>
+                </div>
+                <div>
+                    <a href="#"><i class="fa-solid fa-trash delete-icon"></i></a>
+                </div>
+            </li>
+            {{/each}}
+            {{else}}
+            <p>No comments yet, please feel free to comment</p>
+            {{/if}}
+        </ul>
+        {{#if user}}
+        <form action="/country/{{country.id}}/comment" method="post" class="comments-form">
+            <textarea class="comment-input" name="comment" rows="5" cols="33"
+                placeholder="please insert your comment here..."></textarea>
+            <button type="submit" class="country-btn">comment</button>
+        </form>
+        {{else}}
+        <p class="loggedinerror">You need to be logged in to comment!</p>
+        {{/if}}
+    </div>
     <script>
-        function myFunction() {
-            var popup = document.getElementById("myPopup");
-            popup.classList.toggle("show");
+        async function myFunction() {
+            try {
+                const type = "text/plain";
+                const blob = new Blob(["http://localhost:3000/country/{{country.id}}"], { type });
+                const data = [new ClipboardItem({ [type]: blob })];
+
+                var popup = document.getElementById("myPopup");
+
+                navigator.clipboard.write(data);
+                popup.classList.toggle("show");
+            } catch (err) {
+                console.error(err);
+            }
         }
     </script>
 </section>

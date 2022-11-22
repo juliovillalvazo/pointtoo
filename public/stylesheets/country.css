@@ -5,6 +5,9 @@
 
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        'a b'
+        'c c';
     grid-gap: 2rem;
     height: fit-content;
 
@@ -21,9 +24,14 @@
 }
 
 .country-right-side {
+    grid-area: b;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+}
+
+.country-left-side {
+    grid-area: a;
 }
 
 .country-left-side .top {
@@ -111,6 +119,16 @@ button.country-btn {
     list-style: none;
 }
 
+.single-comment {
+    background-color: var(--white);
+    border-radius: 15px;
+    padding: 1%;
+    height: 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .single-comment:not(:last-child) {
     margin-bottom: 4rem;
 }
@@ -118,6 +136,7 @@ button.country-btn {
 .comment-username {
     font-size: 2.4rem;
     font-weight: 600;
+    text-decoration: underline;
 }
 
 .country-comments {
@@ -126,21 +145,28 @@ button.country-btn {
     align-items: space-between;
     gap: 4rem;
     width: 100%;
+    grid-area: c;
 }
 
 .comment-input {
     margin-bottom: 3rem;
     padding: 2%;
+    border: 1px solid var(--light-blue);
+    border-radius: 20px;
 }
 
 .comments-form {
     align-self: flex-end;
     background-color: var(--white);
-    padding: 5%;
+    padding: 1%;
     display: flex;
     flex-direction: column;
     border-radius: 18px;
     min-width: 50rem;
+}
+
+.delete-icon {
+    color: orangered;
 }
 
 /* Popup container */
@@ -153,7 +179,7 @@ button.country-btn {
 /* The actual popup (appears on top) */
 .popup .popuptext {
     visibility: hidden;
-    width: 350px;
+    width: 150px;
     background-color: #555;
     color: #fff;
     text-align: center;
@@ -162,7 +188,7 @@ button.country-btn {
     position: absolute;
     z-index: 1;
     bottom: 125%;
-    left: -12.5%;
+    left: 53%;
     margin-left: -80px;
     word-break: break-all;
 }
