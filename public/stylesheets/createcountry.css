@@ -46,10 +46,27 @@ font-size: 6rem;
     background-color: #118ab2;
     color: #fff;
     padding: 0rem 2rem;
+    border-radius: 6px;
+    font-size: 3.5rem;
+    margin-right: 2rem;
 }
 
 .color-boton {
     background-color: #118ab2;
     color: #fff;
     padding: 0rem 2rem;
+    border-radius: 6px;
+    font-size: 3.5rem;
+    border: none;
+
+}
+.country-input {
+    height: 3rem;
+    border-radius: 20px;
+    border:2px solid gray;
+    padding: 1.8rem;
+}
+
+.color-link:hover, .color-boton:hover {
+     background-color: var(--main-green);
 }

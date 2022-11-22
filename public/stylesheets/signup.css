@@ -9,17 +9,18 @@
     background-color: var( --main-yellow);
     display: flex;
     justify-content: center;
-    padding: 20rem;
     font-size: 5rem;
+    align-items: center;
+    height: 95vh;
 }
 
 .move-middle {
     background-color: #ef476f88;
     border-radius: 2rem;
     width: 53rem;
-    height: 40rem;
+    /* height: 40rem; */
     display: grid;
-    padding: 3rem;
+    padding: 1rem;
 }
 
 .grid {
@@ -28,7 +29,7 @@
     font-size: 2.5rem;
 }
 
-.align1 {
+/* .align1 {
     display: grid;
     height: 77px;
 }
@@ -39,8 +40,8 @@
 .align3 {
     display: grid;
     height: 77px;
-    margin-bottom: 2rem;
-}
+    margin-bottom: 2rem; 
+} */
 .almedio {
     display: flex;
     justify-content: center;
@@ -57,3 +58,10 @@
     justify-content: center;
     font-size: 5rem;
 }
+
+.padding-input {
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 3.4rem;
+} 

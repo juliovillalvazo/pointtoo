@@ -1,38 +1,40 @@
 
 <section class="new-country-container">
     <h1>Create a new card</h1>
-    <div class="new-row">
-        <div>
-            <h3>country name</h3>
-            <input type="text" placeholder="country">
-        </div>     
-        <div>
-            <h3>fun facts</h3>
-            <input type="text" placeholder="facts">
-        </div>
-    </div>
-    <div class="new-row">
-        <div>
-            <h3>capital</h3>
-            <input type="text" placeholder="capital">
-        </div>    
-        <div>
-            <h3>picture url</h3>
-            <input type="text" placeholder="picture url">
-        </div>
-    </div>
-    <div class="new-row-move-left">
-        <div>
-            <h3>famous dish</h3>
-            <input type="text" placeholder="famous dish">
-        </div>
-        <div class="new-row-button">
-            <div class="edit-boton">
-                <a class="color-link" src="">Cancel</a>
-                <input class="color-boton" type="button" value="Submit">
+    <form action="/create-country" method="post">
+        <div class="new-row">
+            <div>
+                <h3>country name</h3>
+                <input name="name" class="country-input" type="text" placeholder="country">
+            </div>     
+            <div>
+                <h3>fun facts</h3>
+                <input name="funFacts" class="country-input" type="text" placeholder="facts">
             </div>
         </div>
+        <div class="new-row">
+            <div>
+                <h3>capital</h3>
+                <input name="capital" class="country-input" type="text" placeholder="capital">
+            </div>    
+            <div>
+                <h3>picture url</h3>
+                <input name="pictureUrl" class="country-input" type="text" placeholder="picture url">
+            </div>
+        </div>
+        <div class="new-row-move-left">
+            <div>
+                <h3>famous dish</h3>
+                <input name="famousDish" class="country-input" type="text" placeholder="famous dish">
+            </div>
+            <div class="new-row-button">
+                <div>
+                    <a class="color-link" src="">Cancel</a>
+                    <button class="color-boton" type="submit">create</button>
+                    {{!-- <input class="color-boton" type="button" value="Submit"> --}}
+                </div>
+            </div>
 
-    </div>
-     
+        </div>
+    </form>
 </section>

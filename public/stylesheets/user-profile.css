@@ -69,3 +69,18 @@
     min-height: 25rem;
     border-radius: 18px;
 }
+
+.user-create-link {
+   margin: 2rem; 
+   background-color: #ffd166bb;
+   font-size: 1.9rem;
+   width: 24rem;
+   display: flex;
+   justify-content: center;
+   border-radius: 1rem;
+}
+
+.user-create-color {
+    color: #fff;
+    text-decoration: none;
+}
