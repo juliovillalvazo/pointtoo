@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,30 +8,32 @@
   <link rel="stylesheet" href="/stylesheets/login.css">
   <title></title>
 </head>
+
 <body>
-     <div class="direction-middle">
-        <div id="login-form" class="alotro">
-          <h2 class="texo-centrado">Log In</h2>
-            <form action="auth/login" method="POST" class="grid">
+  <div class="direction-middle">
+    <div id="login-form" class="alotro">
+      <h2 class="texo-centrado">Log In</h2>
+      <form action="/auth/login" method="POST" class="grid">
 
-                <label class="alinia1"> Username
-                  <input type="text" name="username" placeholder="Your username" />
-                </label>
+        <label class="alinia1"> Username
+          <input type="text" name="username" placeholder="Your username" />
+        </label>
 
-                <label class="alinia2"> Password
-                  <input type="password" name="password" placeholder="Your password" />
-                </label>
-                  <div class="ajustar">
-                    <a src="" placeholder="Log In" class="enmedio">Log In</a>
-                    </div>
-                <!-- <button type="submit">Log In</button> -->
-
-
-                {{#if errorMessage}}
-                  <p class="error">{{errorMessage}}</p>
-                {{/if}}
-            </form>
+        <label class="alinia2"> Password
+          <input type="password" name="password" placeholder="Your password" />
+        </label>
+        <div class="ajustar">
+          <button type="submit" class="enmedio">Log In</button>
         </div>
-     </div>   
+        <!-- <button type="submit">Log In</button> -->
+
+
+        {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+        {{/if}}
+      </form>
+    </div>
+  </div>
 </body>
+
 </html>

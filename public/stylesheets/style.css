@@ -93,3 +93,13 @@ footer a {
 footer a:hover {
     color: var(--main-green);
 }
+
+.logout {
+    background-color: orangered !important;
+}
+
+.loggedinerror {
+    color: orangered;
+    font-size: 3rem;
+    text-align: center;
+}

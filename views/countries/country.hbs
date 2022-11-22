@@ -2,8 +2,8 @@
     <div class="country-left-side">
         <div class="top">
             <div class="country-info">
-                <h2>CountryName</h2>
-                <p>country, capital</p>
+                <h2>{{country.name}}</h2>
+                <p>{{country.capital}}</p>
             </div>
             <div class="country-rating">
                 <p class="country-title">rating</p>
@@ -19,40 +19,40 @@
         </div>
         <div class="famous-dish">
             <p class="country-title">famous dish</p>
-            <p>famous and delicious dish</p>
+            <p>{{country.famousDish}}</p>
         </div>
         <div class="fun-facts">
             <p class="country-title">fun facts</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa neque laboriosam quia ad magni explicabo
-                atque nisi dolores consequatur voluptatem, eos quo, ullam inventore repellat id optio error cum placeat.
+            <p>{{country.funFacts}}
             </p>
         </div>
         <div class="country-comments">
             <ul class="comments-list">
                 <p class="country-title comment-title">comments</p>
+                {{#if country.comments.length}}
+                {{#each country.comments}}
                 <li class="single-comment">
-                    <p class="comment-username">username</p>
-                    <p class="comment-content">dummy comment</p>
+                    <p class="comment-username">{{user.username}}</p>
+                    <p class="comment-content">{{description}}</p>
                 </li>
-                <li class="single-comment">
-                    <p class="comment-username">username</p>
-                    <p class="comment-content">dummy comment</p>
-
-                </li>
-                <li class="single-comment">
-                    <p class="comment-username">username</p>
-                    <p class="comment-content">dummy comment</p>
-                </li>
+                {{/each}}
+                {{else}}
+                <p>No comments yet, please feel free to comment</p>
+                {{/if}}
             </ul>
-            <form class="comments-form">
-                <textarea class="comment-input" name="comment" rows="5"
-                    cols="33">please insert your comment here...</textarea>
-                <button class="country-btn">comment</button>
+            {{#if user}}
+            <form action="/country/{{country.id}}/comment" method="post" class="comments-form">
+                <textarea class="comment-input" name="comment" rows="5" cols="33"
+                    placeholder="please insert your comment here..."></textarea>
+                <button type="submit" class="country-btn">comment</button>
             </form>
+            {{else}}
+            <p class="loggedinerror">You need to be logged in to comment!</p>
+            {{/if}}
         </div>
     </div>
     <div class="country-right-side">
-        <img class="country-img" src="/images/cool_photo.jpeg" alt="country cool picture">
+        <img class="country-img" src="{{country.pictureUrl}}" alt="country cool picture">
         <div class="country-actions">
 
             <button class="country-btn popup" onclick="myFunction()"><i class="fa-solid fa-share"></i>share

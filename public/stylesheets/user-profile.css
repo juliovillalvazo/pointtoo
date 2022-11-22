@@ -67,5 +67,48 @@
 .bookmarks-container {
     background-color: #ffd166bb;
     min-height: 25rem;
+    max-height: 25rem;
     border-radius: 18px;
+    padding: 3%;
+    overflow: scroll;
+}
+
+.no-comment,
+.no-bookmark {
+    font-size: 4rem;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+}
+
+.comment-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 20px;
+    padding: 2%;
+    margin-bottom: 1rem;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment a,
+.comment a:visited {
+    color: var(--dark-blue);
+    font-size: 2rem;
+}
+
+.comment p {
+    color: var(--dark-blue);
+    font-size: 1.6rem;
+    margin-top: 1rem;
+}
+
+.comment-date {
+    color: var(--dark-blue);
 }

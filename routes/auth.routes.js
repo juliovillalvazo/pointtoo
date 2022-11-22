@@ -90,13 +90,13 @@ router.get('/login', isLoggedOut, (req, res) => {
 
 // POST /auth/login
 router.post('/login', isLoggedOut, (req, res, next) => {
-    const { username, email, password } = req.body;
+    const { username, password } = req.body;
 
     // Check that username, email, and password are provided
-    if (username === '' || email === '' || password === '') {
+    if (username === '' || password === '') {
         res.status(400).render('auth/login', {
             errorMessage:
-                'All fields are mandatory. Please provide username, email and password.',
+                'All fields are mandatory. Please provide username and password.',
         });
 
         return;
@@ -111,8 +111,8 @@ router.post('/login', isLoggedOut, (req, res, next) => {
         });
     }
 
-    // Search the database for a user with the email submitted in the form
-    User.findOne({ email })
+    // Search the database for a user with the username submitted in the form
+    User.findOne({ username })
         .then((user) => {
             // If the user isn't found, send an error message that user provided wrong credentials
             if (!user) {
@@ -159,8 +159,19 @@ router.get('/logout', isLoggedIn, (req, res) => {
     });
 });
 
-router.get('/user-profile', (req, res) => {
-    res.render('users/user-profile');
+router.get('/user-profile', async (req, res) => {
+    const user = await User.findById(req.session.currentUser._id)
+        .populate('userComments')
+        .populate({
+            // we are populating author in the previously populated comments
+            path: 'userComments',
+            populate: {
+                path: 'country',
+                model: 'Country',
+            },
+        });
+    console.log(user);
+    res.render('users/user-profile', { user });
 });
 
 module.exports = router;

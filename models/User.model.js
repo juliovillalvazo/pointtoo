@@ -16,6 +16,12 @@ const userSchema = new Schema(
             trim: true,
             lowercase: true,
         },
+        type: {
+            type: String,
+            enum: ['admin', 'user'],
+            default: 'user',
+            required: true,
+        },
         password: {
             type: String,
             required: true,
@@ -23,6 +29,11 @@ const userSchema = new Schema(
         userRatings: {
             type: [{ type: Schema.Types.ObjectId, ref: 'Rating' }],
         },
+        userComments: {
+            type: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
+        },
+        bookmarks: [{ type: Schema.Types.ObjectId, ref: 'Country' }],
+        pictureUrl: String,
     },
     {
         // this second object adds extra properties: `createdAt` and `updatedAt`

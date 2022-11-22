@@ -1,14 +1,14 @@
 <section class="user-profile">
     <div class="user-profile-left-side">
-        <img class="user-profile__img" src="/images/default-user.png" alt="user profile picture">
+        <img class="user-profile__img" src="{{user.pictureUrl}}" alt="user profile picture">
         <div class="user-info">
             <div>
                 <p class="user-info__label">username</p>
-                <p class="user-info__info">elon musk</p>
+                <p class="user-info__info">{{user.username}}</p>
             </div>
             <div>
                 <p class="user-info__label">email</p>
-                <p class="user-info__info">elonmusk@tesla.com</p>
+                <p class="user-info__info">{{user.email}}</p>
             </div>
         </div>
     </div>
@@ -16,11 +16,39 @@
         <div class="comments-section">
             <h3 class="right-side__title">comments</h3>
             <div class="comments-container">
+                {{#if user.userComments.length}}
+                {{#each user.userComments}}
+                <div class="comment-container">
+                    <div class="comment">
+                        <a href="/country/{{this.country.id}}">{{this.country.name}}</a>
+                        <p>{{this.description}}</p>
+                    </div>
+                    <div class="comment-date">
+                        <p>created on: {{this.createdAt}}</p>
+                    </div>
+                </div>
+                {{/each}}
+                {{else}}
+                <div class="no-comment">
+                    no comments yet
+                </div>
+                {{/if}}
             </div>
         </div>
         <div class="bookmarks-section">
             <h3 class="right-side__title">bookmarks</h3>
             <div class="bookmarks-container">
+                {{#if user.bookmarks.length}}
+                {{#each bookmarks}}
+                <div class="bookmark">
+                    comment one
+                </div>
+                {{/each}}
+                {{else}}
+                <div class="no-bookmark">
+                    no bookmarks yet
+                </div>
+                {{/if}}
             </div>
         </div>
     </div>
