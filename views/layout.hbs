@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/stylesheets/signup.css">
   <link rel="stylesheet" href="/stylesheets/login.css">
   <link rel="stylesheet" href="/stylesheets/createcountry.css">
+  <link rel="stylesheet" href="/stylesheets/about.css">
 </head>
 
 <body>
@@ -27,13 +28,24 @@
       </div>
       <div class="navbar-right">
         <a href="/" id="home" class="navbar-btn">home</a>
+        {{#if user}}
+        <a href="/auth/user-profile" id="profile" class="navbar-btn">profile</a>
+
+        <a href="/auth/logout" id="logout" class="navbar-btn logout">logout</a>
+
+        {{else}}
         <a href="/auth/login" id="login" class="navbar-btn">login</a>
         <a href="/auth/signup" id="signup" class="navbar-btn">signup</a>
+        {{/if}}
       </div>
     </nav>
   </header>
 
   {{{body}}}
+
+  <footer>
+    <a href="/about">about us</a>
+  </footer>
 
   <script src="/js/script.js"></script>
   <script src="https://kit.fontawesome.com/aefbe50b55.js" crossorigin="anonymous"></script>

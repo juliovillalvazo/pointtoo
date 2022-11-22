@@ -1,0 +1,105 @@
+.about {
+    background-color: var(--main-yellow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.about h2 {
+    margin-bottom: 2.4rem;
+    color: white;
+    border-bottom: 2px solid var(--white);
+    width: 60%;
+    text-align: center;
+    padding: 1.2%;
+}
+
+.about-cards-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.card-info {
+    background-color: rgb(234, 143, 116);
+    padding: 5%;
+    min-height: 40rem;
+    min-width: 50rem;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+    z-index: 1;
+    transition: all 0.2s;
+}
+
+.card-info:hover,
+.about-project:hover {
+    transform: scale(1.1) translateX(2rem);
+
+    z-index: 10;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.about-pp {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    position: absolute;
+    right: 3rem;
+}
+
+.about-username {
+    font-size: 2.4rem;
+    color: white;
+}
+
+.about-github,
+.about-linkedin {
+    display: flex;
+    align-items: center;
+}
+
+.about-github a,
+.about-github a:visited,
+.about-linkedin a,
+.about-linkedin a:visited,
+.about-project-link,
+.about-project-link {
+    font-size: 2.2rem;
+    color: white;
+    text-decoration: underline;
+}
+
+.about-github a:hover,
+.about-linkedin a:hover,
+.about-project-link:hover {
+    color: var(--main-red);
+}
+
+.about-icon {
+    font-size: 2.6rem;
+    color: white;
+    margin-right: 1.6rem;
+}
+
+.about-project {
+    margin-top: 4rem;
+    background-color: rgb(234, 143, 116);
+    width: 50%;
+    height: 7rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: all 0.2s;
+}
+
+.about-project p {
+    font-size: 2.2rem;
+    color: white;
+}
