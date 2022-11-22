@@ -93,7 +93,7 @@ router.get('/country/:id/bookmark', async (req, res) => {
 });
 
 router.get('/create-country', (req, res) => {
-    res.render('countries/createcountry');
+    res.render('countries/createcountry', { user: req.session.currentUser });
 });
 
 module.exports = router;
