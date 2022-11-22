@@ -33,7 +33,11 @@ const userSchema = new Schema(
             type: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
         },
         bookmarks: [{ type: Schema.Types.ObjectId, ref: 'Country' }],
-        pictureUrl: String,
+        pictureUrl: {
+            type: String,
+            default:
+                'https://i.pinimg.com/474x/65/25/a0/6525a08f1df98a2e3a545fe2ace4be47.jpg',
+        },
     },
     {
         // this second object adds extra properties: `createdAt` and `updatedAt`
