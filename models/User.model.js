@@ -32,7 +32,9 @@ const userSchema = new Schema(
         userComments: {
             type: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
         },
-        bookmarks: [{ type: Schema.Types.ObjectId, ref: 'Country' }],
+        bookmarks: [
+            { type: Schema.Types.ObjectId, ref: 'Country', unique: true },
+        ],
         pictureUrl: {
             type: String,
             default:

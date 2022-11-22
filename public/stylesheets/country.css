@@ -91,7 +91,7 @@ button.country-btn {
     box-shadow: 10px 10px 10px #073b4c;
 }
 
-.country-btn:not(:last-child) {
+.country-btn {
     margin-right: 4rem;
 }
 
@@ -203,4 +203,25 @@ button.country-btn {
     to {
         opacity: 1;
     }
+}
+
+.disabled {
+    background-color: dimgrey;
+    color: linen;
+    opacity: 1;
+    text-decoration: none;
+    border: none;
+    padding: 2%;
+    min-width: 15rem;
+    max-width: 30rem;
+    height: 5rem;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.2s;
+    align-self: flex-end;
+    font-size: 2.2rem;
+}
+
+.disabled i {
+    margin-right: 1rem;
 }

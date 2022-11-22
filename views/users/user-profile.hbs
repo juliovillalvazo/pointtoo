@@ -11,9 +11,9 @@
                 <p class="user-info__info">{{user.email}}</p>
             </div>
         </div>
-            <div class="user-create-link">
-                 <a class="user-create-color" href="/create-country">Create a new country </a>   
-            </div>
+        <div class="user-create-link">
+            <a class="user-create-color" href="/create-country">Create a new country </a>
+        </div>
     </div>
     <div class="user-profile-right-side">
         <div class="comments-section">
@@ -42,9 +42,11 @@
             <h3 class="right-side__title">bookmarks</h3>
             <div class="bookmarks-container">
                 {{#if user.bookmarks.length}}
-                {{#each bookmarks}}
-                <div class="bookmark">
-                    comment one
+                {{#each user.bookmarks}}
+                <div class="comment-container">
+                    <div class="comment">
+                        <a href="/country/{{id}}">{{name}}</a>
+                    </div>
                 </div>
                 {{/each}}
                 {{else}}

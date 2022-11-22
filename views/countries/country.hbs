@@ -1,5 +1,6 @@
 <section class="country">
     <div class="country-left-side">
+
         <div class="top">
             <div class="country-info">
                 <h2>{{country.name}}</h2>
@@ -59,11 +60,17 @@
                 <span class="popuptext" id="myPopup">copy link: <br>
                     http://localhost:3000/country</span>
             </button>
-            <form>
-                <button type="submit" class="country-btn"><i class="fa-regular fa-bookmark"></i>bookmark</button>
-            </form>
+            {{#if user}}
+            <a href="/country/{{country.id}}/bookmark" class="country-btn"><i
+                    class="fa-regular fa-bookmark"></i>bookmark</a>
+            {{else}}
+            <button class="disabled"><i class="fa-regular fa-bookmark"></i>bookmark</button>
+            {{/if}}
 
         </div>
+        {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+        {{/if}}
     </div>
     <script>
         function myFunction() {

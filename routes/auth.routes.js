@@ -161,7 +161,7 @@ router.get('/logout', isLoggedIn, (req, res) => {
 
 router.get('/user-profile', async (req, res) => {
     const user = await User.findById(req.session.currentUser._id)
-        .populate('userComments')
+        .populate('userComments bookmarks')
         .populate({
             // we are populating author in the previously populated comments
             path: 'userComments',
@@ -170,6 +170,8 @@ router.get('/user-profile', async (req, res) => {
                 model: 'Country',
             },
         });
+
+    console.log(user);
 
     res.render('users/user-profile', { user });
 });

@@ -104,3 +104,15 @@ footer a:hover {
     font-size: 3rem;
     text-align: center;
 }
+
+.error {
+    padding: 2%;
+    height: 4rem;
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+}
