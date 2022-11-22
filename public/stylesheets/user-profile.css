@@ -24,7 +24,7 @@
     align-items: center;
     border-radius: 18px;
     padding: 5%;
-    max-height: 80%;
+    max-height: 83%;
 }
 
 .user-info {
@@ -117,10 +117,12 @@
    margin: 2rem; 
    background-color: #ffd166bb;
    font-size: 1.9rem;
-   width: 24rem;
+   width: 26rem;
    display: flex;
    justify-content: center;
    border-radius: 1rem;
+   height: 18rem;
+   align-items: center;
 }
 
 .user-create-color {

@@ -1,29 +1,41 @@
+<div class="mover">
+  <div id="form" class="move-middle">
+    <h2 class="centrado">Sign Up</h2>
+    <form action="/auth/signup" method="POST" class="grid">
 
-  <div class="mover">
-      <div id="form" class="move-middle">
-          <h2 class="centrado">Sign Up</h2>
-          <form action="/auth/signup" method="POST" class="grid">
+      <label class="align1"> Username</label>
+      <input
+        class="padding-input"
+        type="text"
+        name="username"
+        placeholder="Your username"
+      />
 
-              <label class="align1"> Username</label>
-                  <input class="padding-input" type="text" name="username" placeholder="Your username" />
-                
+      <label class="align2"> Email</label>
+      <input
+        class="padding-input"
+        type="email"
+        name="email"
+        placeholder="Your email"
+      />
 
-                <label class="align2"> Email</label>
-                  <input class="padding-input" type="email" name="email" placeholder="Your email" />
-                
+      <label class="align3"> Password</label>
+      <input
+        class="padding-input"
+        type="password"
+        name="password"
+        placeholder="Your password"
+      />
 
-                <label class="align3"> Password</label>
-                  <input class="padding-input" type="password" name="password" placeholder="Your password" />
-                
-                 {{!-- <div class="adjust">
+      {{! <div class="adjust">
                  <!--<a src="./login.hbs" placeholder="Create account" class="almedio">Create account</a> -->
-                 </div> --}}
-                <button class="almedio" type="submit">Create Account</button>
-
-
-              {{#if errorMessage}}
-                <p class="error">{{errorMessage}}</p>
-              {{/if}}
-          </form>
-    </div>
+                 </div> }}
+      <button class="almedio" type="submit">Create Account</button>
+      {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+    </form>
+    
   </div>
+  
+</div>

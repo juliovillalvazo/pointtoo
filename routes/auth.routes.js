@@ -44,7 +44,7 @@ router.post('/signup', isLoggedOut, (req, res) => {
     }
 
     //   ! This regular expression checks password for special characters and minimum length
-    /*
+    
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
   if (!regex.test(password)) {
     res
@@ -54,7 +54,7 @@ router.post('/signup', isLoggedOut, (req, res) => {
     });
     return;
   }
-  */
+
 
     // Create a new user - start by hashing the password
     bcrypt
@@ -159,7 +159,7 @@ router.get('/logout', isLoggedIn, (req, res) => {
     });
 });
 
-router.get('/user-profile', async (req, res) => {
+router.get('/user-profile', isLoggedIn, async (req, res) => {
     const user = await User.findById(req.session.currentUser._id)
         .populate('userComments')
         .populate({
