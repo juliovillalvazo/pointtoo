@@ -27,7 +27,7 @@ html {
     padding: 1.2%;
     background-color: var(--main-yellow);
     border-bottom: 1px solid grey;
-    height: 5vh;
+    height: 8vh;
 }
 
 .navbar-left__title {

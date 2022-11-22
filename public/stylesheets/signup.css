@@ -6,12 +6,12 @@
 }
 
 .mover {
-    background-color: var( --main-yellow);
+    background-color: var(--main-yellow);
     display: flex;
     justify-content: center;
     font-size: 5rem;
     align-items: center;
-    height: 95vh;
+    height: 92vh;
 }
 
 .move-middle {
@@ -49,7 +49,7 @@
     color: #fff;
     background-color: black;
     border-radius: 4rem;
-} 
+}
 .adjust {
     padding: 8px;
 }
@@ -64,4 +64,4 @@
     border-radius: 10px;
     border: none;
     margin-bottom: 3.4rem;
-} 
+}
