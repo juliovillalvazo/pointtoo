@@ -170,7 +170,7 @@ router.get('/user-profile', async (req, res) => {
                 model: 'Country',
             },
         });
-    console.log(user);
+
     res.render('users/user-profile', { user });
 });
 

@@ -32,7 +32,7 @@ router.get('/country/:id', async (req, res) => {
                 model: 'User',
             },
         });
-    console.log(country);
+
     res.render('countries/country', { country, user: req.session.currentUser });
 });
 
