@@ -18,7 +18,7 @@
     background-color: #ef476f88;
     border-radius: 2rem;
     width: 53rem;
-    height: 39rem;
+    height: 38rem;
     color: black;
 }
 
@@ -34,11 +34,11 @@
 }
 .alinia1 {
     display: grid;
-    height: 75px;
+    height: 40px;
 }
 .alinia2 {
     display: grid;
-    height: 75px;
+    height: 40px;
     margin-top: 2.5rem;
 }
 .enmedio {
@@ -53,5 +53,6 @@
     border: none;
     height: 40px;
     width: 18rem;
+    padding: 15px;
 }
 
