@@ -1,99 +1,126 @@
-const router = require('express').Router();
-const Country = require('../models/Country.model');
-const Comment = require('../models/Comment.model');
-const User = require('../models/User.model');
+const router = require("express").Router();
+const Country = require("../models/Country.model");
+const Comment = require("../models/Comment.model");
+const User = require("../models/User.model");
 
-router.get('/country', async (req, res) => {
-    const countries = await Country.find({})
-        .populate('comments')
-        .populate({
-            // we are populating author in the previously populated comments
-            path: 'comments',
-            populate: {
-                path: 'author',
-                model: 'User',
-            },
-        });
-    const randNum = Math.floor(Math.random() * countries.length);
-    res.render('countries/country', {
-        user: req.session.currentUser,
-        country: countries[randNum],
+router.get("/country", async (req, res) => {
+  const countries = await Country.find({})
+    .populate("comments")
+    .populate({
+      // we are populating author in the previously populated comments
+      path: "comments",
+      populate: {
+        path: "author",
+        model: "User",
+      },
     });
+  const randNum = Math.floor(Math.random() * countries.length);
+  res.render("countries/country", {
+    user: req.session.currentUser,
+    country: countries[randNum],
+  });
 });
 
-router.get('/country/:id', async (req, res) => {
-    const country = await Country.findById(req.params.id)
-        .populate('comments')
-        .populate({
-            // we are populating author in the previously populated comments
-            path: 'comments',
-            populate: {
-                path: 'author',
-                model: 'User',
-            },
-        });
+router.get("/country/:id", async (req, res) => {
+  const country = await Country.findById(req.params.id)
+    .populate("comments")
+    .populate({
+      // we are populating author in the previously populated comments
+      path: "comments",
+      populate: {
+        path: "author",
+        model: "User",
+      },
+    });
 
-    res.render('countries/country', { country, user: req.session.currentUser });
+  res.render("countries/country", { country, user: req.session.currentUser });
 });
 
-router.post('/country/:id/comment', async (req, res) => {
-    try {
-        const { id } = req.params;
+router.post("/country/:id/comment", async (req, res) => {
+  try {
+    const { id } = req.params;
 
-        const { comment } = req.body;
-        const newComment = await Comment.create({
-            author: req.session.currentUser._id,
-            description: comment,
-            country: id,
-        });
-        const country = await Country.findByIdAndUpdate(id, {
-            $push: { comments: newComment },
-        });
+    const { comment } = req.body;
+    const newComment = await Comment.create({
+      author: req.session.currentUser._id,
+      description: comment,
+      country: id,
+    });
+    const country = await Country.findByIdAndUpdate(id, {
+      $push: { comments: newComment },
+    });
 
-        await User.findByIdAndUpdate(req.session.currentUser._id, {
-            $push: { userComments: newComment },
-        });
+    await User.findByIdAndUpdate(req.session.currentUser._id, {
+      $push: { userComments: newComment },
+    });
 
-        res.redirect(`/country/${country.id}`);
-    } catch (err) {
+    res.redirect(`/country/${country.id}`);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get('/country/:idCountry/comment/:idComment/delete', async (req, res) => {
+    try{
+      const {idCountry, idComment} = req.params;
+      // Deleting comment from comment database
+      await Comment.findByIdAndRemove(idComment);
+
+      //deleting comment from country database
+      await Country.findByIdAndUpdate(idCountry, {$pull: {"comments": {_id: idComment}}});
+
+      //deleting comment from user database
+      await User.findByIdAndUpdate(req.session.currentUser._id, {$pull: {"userComments": {_id: idComment}}});
+      res.redirect(`/country/${idCountry}`);
+    } catch(err) {
         console.log(err);
     }
-});
+})
 
-router.get('/country/:id/bookmark', async (req, res) => {
-    const { id } = req.params;
-    const country = await Country.findById(id)
-        .populate('comments')
-        .populate({
-            // we are populating author in the previously populated comments
-            path: 'comments',
-            populate: {
-                path: 'author',
-                model: 'User',
-            },
-        });
-    const user = await User.findById(req.session.currentUser._id);
+router.get("/country/:id/bookmark", async (req, res) => {
+  const { id } = req.params;
+  const country = await Country.findById(id)
+    .populate("comments")
+    .populate({
+      // we are populating author in the previously populated comments
+      path: "comments",
+      populate: {
+        path: "author",
+        model: "User",
+      },
+    });
+  const user = await User.findById(req.session.currentUser._id);
 
-    console.log(user);
+  console.log(user);
 
-    if (user.bookmarks.includes(id)) {
-        return res.render('countries/country', {
-            user,
-            country,
-            errorMessage: 'cannot bookmark twice',
-        });
+  if (user.bookmarks.includes(id)) {
+    return res.render("countries/country", {
+      user,
+      country,
+      errorMessage: "cannot bookmark twice",
+    });
+  }
+  const updatedUser = await User.findByIdAndUpdate(
+    req.session.currentUser._id,
+    {
+      $push: { bookmarks: id },
     }
-    const updatedUser = await User.findByIdAndUpdate(
-        req.session.currentUser._id,
-        {
-            $push: { bookmarks: id },
-        }
-    );
-    res.redirect(`/country/${id}`);
+  );
+  res.redirect(`/country/${id}`);
 });
 
-router.get('/create-country', (req, res) => {
-    res.render('countries/createcountry', { user: req.session.currentUser });
+router.get("/create-country", (req, res) => {
+  res.render("countries/createcountry", { user: req.session.currentUser });
+});
+
+router.post("/create-country", async (req, res) => {
+  try {
+  const { name, funFacts, capital, pictureUrl, famousDish } = req.body;
+  const newCountry = await Country.create({funFacts, capital, famousDish, pictureUrl, name});
+  res.redirect(`/country/${newCountry.id}`);
+  } catch(err) {
+    console.log(err);
+  }
 });
 
 module.exports = router;

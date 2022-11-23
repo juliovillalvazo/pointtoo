@@ -176,4 +176,8 @@ router.get('/user-profile', isLoggedIn, async (req, res) => {
     res.render('users/user-profile', { user });
 });
 
+router.get('/user-profile/edit', (req, res) => {
+    res.render("users/edit-user");
+})
+
 module.exports = router;

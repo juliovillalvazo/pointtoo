@@ -42,13 +42,14 @@ font-size: 6rem;
     display: flex;
     justify-content: flex-end;
 }
-.color-link {
+.color-link, .color-link:visited {
     background-color: #118ab2;
     color: #fff;
     padding: 0rem 2rem;
     border-radius: 6px;
     font-size: 3.5rem;
     margin-right: 2rem;
+    text-decoration: none;
 }
 
 .color-boton {
