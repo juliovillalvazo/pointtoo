@@ -8,14 +8,33 @@
             </div>
             <div class="country-rating">
                 <p class="country-title">rating</p>
-                <p>5/5</p>
-                <div class="stars-container">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
+                {{#if country.rating.length}}
+                <p>{{avgRating}}</p>
+                {{else}}
+                <p>no ratings yet</p>
+                {{/if}}
+                <form action="/country/{{country._id}}/rate" method="post" class="rate-form">
+                    <div class="rate">
+                        <input type="radio" id="star5" name="rate" value="5" />
+                        <label for="star5" title="text">5 stars</label>
+                        <input type="radio" id="star4" name="rate" value="4" />
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star3" name="rate" value="3" />
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star2" name="rate" value="2" />
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star1" name="rate" value="1" />
+                        <label for="star1" title="text">1 star</label>
+                    </div>
+                    {{#if user}}
+                    <button type="submit" class="rate-btn">rate</button>
+                    {{else}}
+                    <p class="error">log in to rate</p>
+                    {{/if}}
+                    {{#if errorRate}}
+                    <p class="error">{{errorRate}}</p>
+                    {{/if}}
+                </form>
             </div>
         </div>
         <div class="famous-dish">

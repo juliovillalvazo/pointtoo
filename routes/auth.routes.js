@@ -17,7 +17,6 @@ const Country = require('../models/Country.model');
 // Require necessary (isLoggedOut and isLoggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require('../middleware/isLoggedOut');
 const isLoggedIn = require('../middleware/isLoggedIn');
-const { update } = require('../models/Country.model');
 
 // GET /auth/signup
 router.get('/signup', isLoggedOut, (req, res) => {
@@ -165,6 +164,7 @@ router.get('/logout', isLoggedIn, (req, res) => {
 });
 
 router.get('/user-profile', isLoggedIn, async (req, res) => {
+    let admin = false;
     const user = await User.findById(req.session.currentUser._id)
         .populate('userComments bookmarks')
         .populate({
@@ -176,12 +176,36 @@ router.get('/user-profile', isLoggedIn, async (req, res) => {
             },
         });
 
-    res.render('users/user-profile', { user });
+    if (user.type === 'admin') {
+        admin = true;
+    }
+
+    res.render('users/user-profile', { user, admin });
 });
 
 router.get('/users-profile/comment/:idComment/edit', async (req, res) => {
     try {
-        res.render('users/edit-comment');
+        const { idComment } = req.params;
+        const comment = await Comment.findById(idComment);
+        res.render('users/edit-comment', {
+            comment,
+            user: req.session.currentUser,
+        });
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+router.post('/user-profile/comment/:idComment/edit', async (req, res) => {
+    try {
+        const { idComment } = req.params;
+        const { comment } = req.body;
+
+        await Comment.findByIdAndUpdate(idComment, {
+            description: comment,
+        });
+
+        res.redirect('/auth/user-profile');
     } catch (err) {
         console.log(err);
     }

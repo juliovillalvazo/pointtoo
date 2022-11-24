@@ -1,11 +1,13 @@
 const router = require('express').Router();
 const Country = require('../models/Country.model');
 const Comment = require('../models/Comment.model');
+const Rating = require('../models/Rating.model');
 const User = require('../models/User.model');
+const { aggregate } = require('../models/User.model');
 
 router.get('/country', async (req, res) => {
     const countries = await Country.find({})
-        .populate('comments')
+        .populate('comments rating')
         .populate({
             // we are populating author in the previously populated comments
             path: 'comments',
@@ -15,15 +17,27 @@ router.get('/country', async (req, res) => {
             },
         });
     const randNum = Math.floor(Math.random() * countries.length);
+
+    const avgRating = countries[randNum].rating
+        .reduce((prev, curr, i) => {
+            if (i === countries[randNum].rating.length - 1) {
+                return (prev + curr.rate) / countries[randNum].rating.length;
+            } else {
+                return prev + curr.rate;
+            }
+        }, 0)
+        .toFixed(2);
+
     res.render('countries/country', {
         user: req.session.currentUser,
         country: countries[randNum],
+        avgRating,
     });
 });
 
 router.get('/country/:id', async (req, res) => {
     const country = await Country.findById(req.params.id)
-        .populate('comments')
+        .populate('comments rating')
         .populate({
             // we are populating author in the previously populated comments
             path: 'comments',
@@ -33,7 +47,21 @@ router.get('/country/:id', async (req, res) => {
             },
         });
 
-    res.render('countries/country', { country, user: req.session.currentUser });
+    const avgRating = country.rating
+        .reduce((prev, curr, i) => {
+            if (i === country.rating.length - 1) {
+                return (prev + curr.rate) / country.rating.length;
+            } else {
+                return prev + curr.rate;
+            }
+        }, 0)
+        .toFixed(2);
+
+    res.render('countries/country', {
+        country,
+        user: req.session.currentUser,
+        avgRating,
+    });
 });
 
 router.post('/country/:id/comment', async (req, res) => {
@@ -117,6 +145,98 @@ router.post('/create-country', async (req, res) => {
             name,
         });
         res.redirect(`/country/${newCountry.id}`);
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+router.post('/country/:idCountry/rate', async (req, res) => {
+    try {
+        const { idCountry } = req.params;
+        const { rate } = req.body;
+
+        if (!rate) {
+            const country = await Country.findById(idCountry)
+                .populate('comments rating')
+                .populate({
+                    // we are populating author in the previously populated comments
+                    path: 'comments',
+                    populate: {
+                        path: 'author',
+                        model: 'User',
+                    },
+                });
+            const avgRating = country.rating
+                .reduce((prev, curr, i) => {
+                    if (i === country.rating.length - 1) {
+                        return (prev + curr.rate) / country.rating.length;
+                    } else {
+                        return prev + curr.rate;
+                    }
+                }, 0)
+                .toFixed(2);
+            res.render('countries/country', {
+                errorRate: 'choose a star',
+                user: req.session.currentUser._id,
+                country,
+                avgRating,
+            });
+            return;
+        }
+
+        // country ratings no haya un rating.user === user.id
+        const currentCountry = await Country.findById(idCountry).populate(
+            'rating'
+        ); // aqui conseguimos el pais con sus ratings
+        if (
+            currentCountry.rating.some((rate) => {
+                return rate.user.toString() === req.session.currentUser._id;
+            })
+        ) {
+            const country = await Country.findById(idCountry)
+                .populate('comments rating')
+                .populate({
+                    // we are populating author in the previously populated comments
+                    path: 'comments',
+                    populate: {
+                        path: 'author',
+                        model: 'User',
+                    },
+                });
+            const avgRating = country.rating
+                .reduce((prev, curr, i) => {
+                    if (i === country.rating.length - 1) {
+                        return (prev + curr.rate) / country.rating.length;
+                    } else {
+                        return prev + curr.rate;
+                    }
+                }, 0)
+                .toFixed(2);
+
+            res.render('countries/country', {
+                errorRate: 'cannot rate twice',
+                user: req.session.currentUser._id,
+                country,
+                avgRating,
+            });
+            return;
+        }
+
+        const newRate = await Rating.create({
+            country: idCountry,
+            user: req.session.currentUser._id,
+            rate,
+        });
+
+        const country = await Country.findByIdAndUpdate(idCountry, {
+            $push: { rating: newRate },
+        }).populate('rating');
+
+        await User.findByIdAndUpdate(req.session.currentUser._id, {
+            $push: { userRatings: newRate },
+        });
+
+        res.redirect(`/country/${country._id}`);
     } catch (err) {
         console.log(err);
     }
