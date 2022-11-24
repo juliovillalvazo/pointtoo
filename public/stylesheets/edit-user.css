@@ -1,19 +1,11 @@
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    font-family: 'Rubik', 'sans-serif';
-}
 
-html {
-    font-size: 62.5%;
-}
 .edit-font-nombre {
    font-size: 5.2rem;
    color: #118ab2;
 }
 
 .edit-user-container {
+    background-color:#ffd166 ;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,7 +13,7 @@ html {
     height: 100%;
 }
 .new-row-edit {
-    color: #118ab2;
+    color:#118ab2;
     font-size: 2rem;
     height: 208px;
     width: 400px;
