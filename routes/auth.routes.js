@@ -14,7 +14,7 @@ const User = require('../models/User.model');
 const Comment = require('../models/Comment.model');
 const Country = require('../models/Country.model');
 
-// Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
+// Require necessary (isLoggedOut and isLoggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require('../middleware/isLoggedOut');
 const isLoggedIn = require('../middleware/isLoggedIn');
 const { update } = require('../models/Country.model');
@@ -176,8 +176,6 @@ router.get('/user-profile', isLoggedIn, async (req, res) => {
             },
         });
 
-    console.log(user);
-
     res.render('users/user-profile', { user });
 });
 
@@ -240,5 +238,17 @@ router.get(
         }
     }
 );
+
+router.get('/user-profile/:idCountry/bookmark/delete', async (req, res) => {
+    try {
+        console.log(req.params.idCountry);
+        await User.findByIdAndUpdate(req.session.currentUser._id, {
+            $pull: { bookmarks: req.params.idCountry },
+        });
+        res.redirect('/auth/user-profile');
+    } catch (err) {
+        console.log(err);
+    }
+});
 
 module.exports = router;
