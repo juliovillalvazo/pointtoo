@@ -1,24 +1,34 @@
+// importan scheema & model to design user model
 const { Schema, model } = require('mongoose');
 
-// TODO: Please make sure you edit the User model to whatever makes sense in this case
+// defining user structure schema. will require username,password,type:{guess by default}, 
+// userRatings, userComments, bookmarks, pictureUrl
 const userSchema = new Schema(
     {
         username: {
             type: String,
-            required: false,
+            required: true,
+            // username is mandetory to define a new user in DB.
             unique: true,
+            //this wont allowed repeated usernames
             trim: true,
+            //this wont allow any blank spaces in usernames
         },
         email: {
             type: String,
             required: true,
+            // email is mandetory to define a new email in DB.
             unique: true,
+            //this wont allowed repeated emails
             trim: true,
+            //this wont allow any blank spaces in emails
             lowercase: true,
+            // this will transform text input to lowercase.
         },
         type: {
             type: String,
             enum: ['admin', 'user'],
+            //enum will always be admin or user. if you input something else will give you a error message.
             default: 'user',
             required: true,
         },
@@ -27,11 +37,14 @@ const userSchema = new Schema(
             required: true,
         },
         userRatings: {
+            // type only accepts array objects that bring type:schema.types.Objectid that come from model ref:'Rating'
             type: [{ type: Schema.Types.ObjectId, ref: 'Rating' }],
         },
         userComments: {
+            //type:schema.types.Objectid is related too the commentId in data base ref: comment comes from the model comment.model.js
             type: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
         },
+        //type:schema.types.Objectid is related too the countriesId in data base ref: country comes from the model country.model.js
         bookmarks: [{ type: Schema.Types.ObjectId, ref: 'Country' }],
         pictureUrl: {
             type: String,

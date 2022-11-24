@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 
+
 const ratingSchema = new Schema({
     country: { type: Schema.Types.ObjectId, ref: 'Country' },
     user: { type: Schema.Types.ObjectId, ref: 'User' },
