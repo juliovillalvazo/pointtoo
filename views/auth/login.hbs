@@ -1,40 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="direction-middle">
+  <div id="login-form" class="alotro">
+    <h2 class="texo-centrado">Log In</h2>
+    {{!-- <form action="/auth/login" method="POST" class="grid">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/stylesheets/login.css">
-  <title></title>
-</head>
-
-<body>
-  <div class="direction-middle">
-    <div id="login-form" class="alotro">
-      <h2 class="texo-centrado">Log In</h2>
-      <form action="/auth/login" method="POST" class="grid">
-
-        <label class="alinia1"> Username</label> 
-          <input class="input-radius" type="text" name="username" placeholder="Your username" />
-        
-
-        <label class="alinia2"> Password</label>
-          <input class="input-radius" type="password" name="password" placeholder="Your password" />
-        
-        {{!-- <div class="ajustar">
-          <a src="" placeholder="Log In" class="enmedio">Log In</a>
-        </div> --}}
-        <button class="enmedio" type="submit">Log In</button>
+      <label class="alinia1"> Username</label>
+      <input class="input-radius" type="text" name="username" placeholder="Your username" />
 
 
-        {{#if errorMessage}}
-        <p class="error">{{errorMessage}}</p>
-        {{/if}}
-      </form>
-    </div>
-    <!-- <button type="submit">Log In</button> -->
+      <label class="alinia2"> Password</label>
+      <input class="input-radius" type="password" name="password" placeholder="Your password" />
+
+      <div class="ajustar">
+        <a src="" placeholder="Log In" class="enmedio">Log In</a>
+      </div>
+      <button class="enmedio" type="submit">Log In</button>
+
+
+      {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+      {{/if}}
+    </form> --}}
+    <form action="/auth/login" method="POST" class="login-form-container">
+
+      <div class="login-input-row">
+        <label for="username"> Username</label>
+        <input id="username" class="input-radius" type="text" name="username" placeholder="Your username" />
+      </div>
+
+
+      <div class="login-input-row">
+        <label for="password"> Password</label>
+        <input id="password" class="input-radius" type="password" name="password" placeholder="Your password" />
+      </div>
+
+      {{!-- <div class="ajustar">
+        <a src="" placeholder="Log In" class="enmedio">Log In</a>
+      </div> --}}
+      <button class="enmedio" type="submit">Log In</button>
+    </form>
+
   </div>
-</body>
-
-</html>
+  {{#if errorMessage}}
+  <p class="error">{{errorMessage}}</p>
+  {{/if}}
+  <!-- <button type="submit">Log In</button> -->
+</div>

@@ -165,10 +165,6 @@ button.country-btn {
     min-width: 50rem;
 }
 
-.delete-icon {
-    color: orangered;
-}
-
 /* Popup container */
 .popup {
     position: relative;

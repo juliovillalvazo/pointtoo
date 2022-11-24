@@ -127,3 +127,35 @@
     color: #fff;
     text-decoration: none;
 }
+
+.edit-profile-link {
+    align-self: flex-end;
+}
+
+.edit-profile-link a,
+.edit-profile-link:visited {
+    color: #fff;
+    font-size: 2rem;
+}
+
+.comment-date-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-icon {
+    color: orangered;
+    font-size: 2rem;
+}
+
+.delete-icon-container {
+    margin-top: 0.8rem;
+    align-self: flex-end;
+}
+.user-profile-edit-comment,
+.user-profile-edit-comment:visited {
+    color: var(--dark-blue);
+    margin-right: 1.8rem;
+}

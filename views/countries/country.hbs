@@ -52,15 +52,14 @@
             <p class="country-title comment-title">comments</p>
             {{#if country.comments.length}}
             {{#each country.comments}}
+
             <li class="single-comment">
                 <div>
-                    <p class="comment-username">{{author.username}}</p>
+                    <p id="{{author._id}}" class="comment-username">{{author.username}}</p>
                     <p class="comment-content">{{description}}</p>
                 </div>
-                <div>
-                    <a href="/country/{{country._id}}/comment/{{_id}}/delete"><i class="fa-solid fa-trash delete-icon"></i></a>
-                </div>
             </li>
+
             {{/each}}
             {{else}}
             <p>No comments yet, please feel free to comment</p>
@@ -77,6 +76,8 @@
         {{/if}}
     </div>
     <script>
+        const commentAuthorId = document.querySelector('.comment-username');
+        console.log(commentAuthorId);
         async function myFunction() {
             try {
                 const type = "text/plain";

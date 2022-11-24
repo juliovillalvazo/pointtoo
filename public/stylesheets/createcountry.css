@@ -1,19 +1,10 @@
-body {
-    background-color:#ffd166;
+.new-country-container h2 {
+    font-size: 4rem;
+    align-self: flex-start;
+    margin-left: 18rem;
 }
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    font-family: 'Rubik', 'sans-serif';
-}
-
-html {
-    font-size: 62.5%;
-}
-
-h1 {
-font-size: 6rem;
+.new-country-form h3 {
+    font-size: 2.3rem;
 }
 
 .new-row {
@@ -25,24 +16,41 @@ font-size: 6rem;
     padding: 2.3rem;
 }
 
-.new-row-move-left{
+.new-country-form {
+    border-radius: 20px;
+    background-color: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    height: 70%;
+    align-items: center;
+    justify-items: center;
+    width: 70%;
+}
+
+.new-row-move-left {
     color: #118ab2;
     font-size: 2rem;
     background-color: #fff;
-    padding: 2.3rem 26.3rem
+    padding: 2.3rem 26.3rem;
 }
 .new-country-container {
     color: #118ab2;
-    padding: 5.2rem;
+    padding: 5rem;
     display: flex;
     width: 100%;
+    height: 100%;
     flex-direction: column;
+    background-color: var(--main-yellow);
+    justify-content: center;
+    align-items: center;
 }
-.new-row-button{
+.new-row-button {
     display: flex;
     justify-content: flex-end;
 }
-.color-link, .color-link:visited {
+.color-link,
+.color-link:visited {
     background-color: #118ab2;
     color: #fff;
     padding: 0rem 2rem;
@@ -59,15 +67,15 @@ font-size: 6rem;
     border-radius: 6px;
     font-size: 3.5rem;
     border: none;
-
 }
 .country-input {
     height: 3rem;
     border-radius: 20px;
-    border:2px solid gray;
+    border: 2px solid gray;
     padding: 1.8rem;
 }
 
-.color-link:hover, .color-boton:hover {
-     background-color: var(--main-green);
+.color-link:hover,
+.color-boton:hover {
+    background-color: var(--main-green);
 }

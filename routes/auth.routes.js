@@ -10,6 +10,9 @@ const saltRounds = 10;
 
 // Require the User model in order to interact with the database
 const User = require('../models/User.model');
+// Require Comment model and Country model to enable deleting comments and bookmarks
+const Comment = require('../models/Comment.model');
+const Country = require('../models/Country.model');
 
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require('../middleware/isLoggedOut');
@@ -44,17 +47,15 @@ router.post('/signup', isLoggedOut, (req, res) => {
     }
 
     //   ! This regular expression checks password for special characters and minimum length
-    
-  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-  if (!regex.test(password)) {
-    res
-      .status(400)
-      .render("auth/signup", {
-        errorMessage: "Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter."
-    });
-    return;
-  }
 
+    const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+    if (!regex.test(password)) {
+        res.status(400).render('auth/signup', {
+            errorMessage:
+                'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.',
+        });
+        return;
+    }
 
     // Create a new user - start by hashing the password
     bcrypt
@@ -73,6 +74,7 @@ router.post('/signup', isLoggedOut, (req, res) => {
                     errorMessage: error.message,
                 });
             } else if (error.code === 11000) {
+                console.log(error);
                 res.status(500).render('auth/signup', {
                     errorMessage:
                         'Username and email need to be unique. Provide a valid username or email.',
@@ -84,7 +86,9 @@ router.post('/signup', isLoggedOut, (req, res) => {
 });
 
 // GET /auth/login
-router.get('/login', isLoggedOut, (req, res) => {
+router.get('/login', isLoggedOut, async (req, res) => {
+    const users = await User.find({});
+    console.log(users);
     res.render('auth/login');
 });
 
@@ -176,8 +180,40 @@ router.get('/user-profile', isLoggedIn, async (req, res) => {
     res.render('users/user-profile', { user });
 });
 
+router.get('/users-profile/comment/:idComment/edit', async (req, res) => {
+    try {
+        res.send(req.params.idComment);
+    } catch (err) {
+        console.log(err);
+    }
+});
+
 router.get('/user-profile/edit', (req, res) => {
-    res.render("users/edit-user");
-})
+    res.render('users/edit-user');
+});
+
+router.get(
+    '/user-profile/:idCountry/comment/:idComment/delete',
+    async (req, res) => {
+        try {
+            const { idCountry, idComment } = req.params;
+            // Deleting comment from comment database
+            await Comment.findByIdAndRemove(idComment);
+
+            //deleting comment from country database
+            await Country.findByIdAndUpdate(idCountry, {
+                $pull: { comments: idComment },
+            });
+
+            //deleting comment from user database
+            await User.findByIdAndUpdate(req.session.currentUser._id, {
+                $pull: { userComments: idComment },
+            });
+            res.redirect('/auth/user-profile');
+        } catch (err) {
+            console.log(err);
+        }
+    }
+);
 
 module.exports = router;

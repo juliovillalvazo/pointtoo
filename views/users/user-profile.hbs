@@ -10,10 +10,12 @@
                 <p class="user-info__label">email</p>
                 <p class="user-info__info">{{user.email}}</p>
             </div>
+            <div class="edit-profile-link">
+                <a href="/auth/user-profile/edit">edit profile</a>
+            </div>
         </div>
-        <div class="user-create-link">
-            <a class="user-create-color" href="/create-country">Create a new country </a>
-        </div>
+
+        <a class="user-create-link user-create-color" href="/create-country">Create a new country </a>
     </div>
     <div class="user-profile-right-side">
         <div class="comments-section">
@@ -26,8 +28,18 @@
                         <a href="/country/{{this.country.id}}">{{this.country.name}}</a>
                         <p>{{this.description}}</p>
                     </div>
-                    <div class="comment-date">
-                        <p>created on: {{this.createdAt}}</p>
+
+                    <div class="comment-date-container">
+                        <div class="comment-date">
+                            <p>created on: {{this.createdAt}}</p>
+                        </div>
+                        <div class="delete-icon-container">
+                            <a class="user-profile-edit-comment"
+                                href="/auth/users-profile/comment/{{this._id}}/edit">edit
+                                comment</a>
+                            <a href="/auth/user-profile/{{country._id}}/comment/{{_id}}/delete"><i
+                                    class="fa-solid fa-trash delete-icon"></i></a>
+                        </div>
                     </div>
                 </div>
                 {{/each}}
@@ -46,6 +58,10 @@
                 <div class="comment-container">
                     <div class="comment">
                         <a href="/country/{{id}}">{{name}}</a>
+                    </div>
+                    <div>
+                        <a href="/country/{{country._id}}/comment/{{_id}}/delete"><i
+                                class="fa-solid fa-trash delete-icon"></i></a>
                     </div>
                 </div>
                 {{/each}}
