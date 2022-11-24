@@ -1,0 +1,31 @@
+<section class="edit-user-container">
+    <h1 class="edit-font-nombre">Edit User</h1>
+    <form class="border-edit" action="user-profile/edit" method="post">
+        <div class="new-row-edit">
+            <div class="edit-margin-user">
+                <h3>Username</h3>
+                <h3 name="name">User</h3> 
+            </div>     
+            <div>
+                <h3>Email</h3>
+                <input name="funFacts" class="edit-user-input" type="text" placeholder="facts">
+            </div>
+        </div>
+        <div class="new-row-edit">
+            <div>
+                <h3>picture url</h3>
+                <input name="pictureUrl" class="edit-user-input" type="text" placeholder="picture url">
+            </div>
+            <div class="new-edit-button">
+                <div>
+                    <a class="color-del-link" href="/auth/user-profile">Cancel</a>
+                    <button class="color-del-boton" type="submit">Update</button>
+                    {{!-- <input class="color-boton" type="button" value="Submit"> --}}
+                </div>
+            </div>
+        </div>
+            
+
+        </div>
+    </form>
+</section>
