@@ -17,6 +17,7 @@ const Country = require('../models/Country.model');
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require('../middleware/isLoggedOut');
 const isLoggedIn = require('../middleware/isLoggedIn');
+const { update } = require('../models/Country.model');
 
 // GET /auth/signup
 router.get('/signup', isLoggedOut, (req, res) => {
@@ -188,8 +189,32 @@ router.get('/users-profile/comment/:idComment/edit', async (req, res) => {
     }
 });
 
-router.get('/user-profile/edit', (req, res) => {
-    res.render('users/edit-user');
+router.get('/user-profile/edit', async (req, res) => {
+    try {
+        const user = await User.findById(req.session.currentUser._id);
+
+        res.render('users/edit-user', { user });
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+router.post('/user-profile/edit', async (req, res) => {
+    try {
+        const { email, pictureUrl } = req.body;
+        const username = req.session.currentUser.username;
+        const id = req.session.currentUser._id;
+
+        const updatedUser = await User.findByIdAndUpdate(
+            id,
+            { username, email, pictureUrl },
+            { new: true }
+        );
+
+        res.redirect('/auth/user-profile');
+    } catch (err) {
+        console.log(err);
+    }
 });
 
 router.get(

@@ -39,6 +39,10 @@ body {
     font-size: 2.5rem;
 }
 
+.no-text-decoration {
+    text-decoration: none;
+}
+
 .navbar-left__title:hover {
     color: var(--main-red);
 }
