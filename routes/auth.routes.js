@@ -183,7 +183,7 @@ router.get('/user-profile', isLoggedIn, async (req, res) => {
 
 router.get('/users-profile/comment/:idComment/edit', async (req, res) => {
     try {
-        res.send(req.params.idComment);
+        res.render('users/edit-comment');
     } catch (err) {
         console.log(err);
     }
@@ -240,5 +240,6 @@ router.get(
         }
     }
 );
+
 
 module.exports = router;
