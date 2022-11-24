@@ -49,3 +49,33 @@
 .icon:hover {
     color: var(--main-red);
 }
+
+.about-index {
+    position: absolute;
+    top: 8rem;
+    right: -120rem;
+    width: 6rem;
+    height: 6rem;
+    z-index: 10;
+    background-color: transparent;
+    border: none;
+}
+
+.question-icon {
+    font-size: 5rem;
+    color: var(--dark-blue);
+    transition: all 0.2s;
+}
+
+.question-icon:hover {
+    color: var(--main-green);
+    transform: scale(1.5);
+}
+
+.fix-width {
+    width: 180px !important;
+    overflow-wrap: break-word !important;
+    padding: 3% !important;
+    left: 32% !important;
+    font-size: 2rem;
+}

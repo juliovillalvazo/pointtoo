@@ -1,6 +1,20 @@
 <section class="homepage">
     <i class="fa-solid fa-location-dot icon"></i>
+    <button class="about-index popup" onclick="myFunction()"><i class="fa-solid fa-question question-icon"></i>
+        <span class="popuptext fix-width" id="myPopup">Click the random location button to go and learn about a random
+            country
+        </span>
+    </button>
     <div class="rand-country-btn">
         <a href="/country">random location</a>
     </div>
+    <script>
+        function myFunction() {
+
+            var popup = document.getElementById("myPopup");
+
+            popup.classList.toggle("show");
+
+        }
+    </script>
 </section>
