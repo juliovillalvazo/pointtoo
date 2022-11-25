@@ -9,11 +9,19 @@ require('./db');
 // https://www.npmjs.com/package/express
 const express = require('express');
 
+// import moment
+const moment = require('moment');
+
 // Handles the handlebars
 // https://www.npmjs.com/package/hbs
 const hbs = require('hbs');
 
 const app = express();
+
+// register a helper
+hbs.registerHelper('formatDate', (date) => {
+    return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+});
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require('./config')(app);
